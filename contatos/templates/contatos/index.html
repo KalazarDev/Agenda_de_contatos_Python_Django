@@ -3,9 +3,11 @@
 {%block conteudo%}
 <h1 class="mt-5">Minha agenda</h1>
 
+
 <table class="table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Nome</th>
       <th>Sobrenome</th>
       <th>Telefone</th>
@@ -13,30 +15,37 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
-        <a href="#"> João</a>
-      </td>
-      <td>Bozolino</td>
-      <td>35 9 5555-5555</td>
-      <td>Conhecidos</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="#"> Webber</a>
-      </td>
-      <td>Bigodon</td>
-      <td>35 9 8888-5555</td>
-      <td>Família</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="#"> Waltinho</a>
-      </td>
-      <td>Do Alagoas</td>
-      <td>35 9 9999-4352</td>
-      <td>Família</td>
-    </tr>
+    {% for contato in contatos %}
+      <!-- {% if contato.mostrar %} -->
+        <tr>
+          <td>{{ contato.id }}</td>
+          <td>
+            <a href="{% url 'ver_contato' contato.id %}" > {{ contato.nome }}</a>
+          </td>
+          <td>{{ contato.sobrenome }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>{{ contato.categoria }}</td>
+        </tr>
+
+
+      <!-- {% endif %} -->
+    {% endfor %}
+   
   </tbody>
 </table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% for pagina in contatos.paginator.page_range %}
+    {% if contatos.number == pagina %}
+      <li class="page-item active"><a href="?p={{ pagina }}&termo={{ request.GET.termo}}" class="page-link"></a>{{pagina}}</li>
+    {% else %}
+      <li class="page-item"><a href="?p={{ pagina }}&termo={{ request.GET.termo }}" class="page-link"></a>{{pagina}}</li>
+    {% endif %}
+
+    {% endfor %}
+
+
+  </ul>
+</nav>
 {%endblock%}
