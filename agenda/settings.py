@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'contatos.apps.ContatosConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MENSAGENS
 from django.contrib.messages import constants
  
-MENSAGE_TAGS={
+MESSAGE_TAGS={
      constants.ERROR: 'alert-danger',
      constants.WARNING: 'alert-warning',
      constants.DEBUG: 'alert-info',

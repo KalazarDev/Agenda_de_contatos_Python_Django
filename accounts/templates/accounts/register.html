@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{%block titulo%}{request.GET.termo} | Cadastro {%endblock%}
+{% block conteudo %}
+<h1 class="mt-2 mb-2">Cadastro</h1>
+
+<form method="POST" action="{% url 'register' %}">
+        {% include 'parciais/_msg.html' %}
+        {% csrf_token %}
+    <div class="form-group">
+        <label>nome</label>
+        <input type="teste" name="nome" value="{{request.POST.nome}}" class="form-control" placeholder="Digite seu nome">
+    </div>
+    <div class="form-group">
+        <label>Sobrenome</label>
+        <input type="text" name="sobrenome" value="{{request.POST.sobrenome}}"" class="form-control" placeholder="Digite seu sobrenome">
+    </div>
+    <div class="form-group">
+        <label>Email address</label>
+        <input type="email" name="email" value="{{request.POST.email}}"class="form-control" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <label>Usuário</label>
+        <input type="text" name="usuario" value="{{request.POST.usuario}}" class="form-control" placeholder="Digite seu Usuário">
+    </div>
+    <div class="form-group">
+        <label>Senha</label>
+        <input type="password" name="senha" class="form-control" placeholder="Digite sua senha">
+    </div>
+    <div class="form-group">
+        <label>Repetir a senha</label>
+        <input type="password" name="senha2" class="form-control" placeholder="Confirme a Senha">
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+{%endblock%}
