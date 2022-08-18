@@ -2,8 +2,6 @@
 {%block titulo%} Login {%endblock%}
 
 {% block conteudo %} 
-{% include 'parciais/_msg.html' %}
-
 {% if not user.is_authenticated %}
 
 <form method="POST" action="{% url 'login' %}">

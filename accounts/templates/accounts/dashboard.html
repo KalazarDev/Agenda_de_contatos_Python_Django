@@ -2,7 +2,7 @@
 {%block titulo%} DashBoard de {{user}} {%endblock%}
 {% block conteudo %}
 
-<h1> olá {{ user.first_name }} {{ user.last_name }}</h1>
+<h3>Cadastro de contato</h3>
 {% include 'parciais/_msg.html'%}
 <div class="container">
     <form action="{% url 'dashboard' %}" method="POST"

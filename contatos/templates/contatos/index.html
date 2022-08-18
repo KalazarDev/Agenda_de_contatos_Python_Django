@@ -40,16 +40,16 @@
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-    {% for pagina in contatos.paginator.page_range %}
-    {% if contatos.number == pagina %}
-    <li class="page-item active"><a href="?p={{ pagina }}&termo={{
-        request.GET.termo}}" class="page-link"></a>{{pagina}}</li>
-    {% else %}
-    <li class="page-item"><a href="?p={{ pagina }}&termo={{ request.GET.termo
-        }}" class="page-link"></a>{{pagina}}</li>
-    {% endif %}
 
-    {% endfor %}
+      {% for pagina in contatos.paginator.page_range %}
+        {% if contatos.number == pagina %}
+          <li class="page-item active"><a href="?p={{pagina}}&termo={{
+              request.GET.termo}}" class="page-link"></a>{{pagina}}</li>
+        {% else %}
+          <li class="page-item"><a href="?p={{ pagina }}&termo={{ request.GET.termo
+            }}" class="page-link"></a>{{pagina}}</li>
+          {% endif %}
+        {% endfor %}
 
 
   </ul>
