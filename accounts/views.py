@@ -8,15 +8,14 @@ from contatos.views import index
 
 # Create your views here.
 
-
 def login(request):
     if request.method != 'POST':
         return render(request, 'accounts/login.html')
     usuario = request.POST.get('usuario')
     senha = request.POST.get('senha')
-    
+
     user = auth.authenticate(request, username=usuario, password = senha)
-    
+
     if not user:
         messages.error(request, 'Usuario e/ou senha inválidos')
         return render(request, 'accounts/login.html')
@@ -24,7 +23,7 @@ def login(request):
         auth.login(request, user)
         messages.success(request, 'Você Logou com sucesso')
         return redirect('index')
-    
+
 
 def logout(request):
     auth.logout(request)
